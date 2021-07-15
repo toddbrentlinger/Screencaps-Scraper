@@ -43,6 +43,8 @@ def scrapeFanCapsURL(url, title):
         else:
             url = 'https://fancaps.net/movies/' + lastPaginationLink['href']
 
+    print('Completed scraping ', page, ' pages')
+
     #pp = pprint.PrettyPrinter(indent=4)
     #pp.pprint(imageURLList)
 
@@ -94,6 +96,8 @@ def downloadImagesFromURLList(imageURLList, title):
             print('Image sucessfully Downloaded: ', filename, ' (', current, '/', total, ')', end='\r')
         else:
             print('Image Couldn\'t be retreived from url: ', imageURL)
+            
+    print('Completed downloading ', current, ' images')
 
 def downloadImagesFromJSON(url, urlPrepend):
     with open(url, 'r') as outfile:
@@ -104,7 +108,9 @@ def main():
     # Elapsed Time - Start
     startTime = time.time()
 
-    scrapeFanCapsURL('https://fancaps.net/movies/MovieImages.php?name=Kick_Ass_2&movieid=528', 'Kick-Ass 2')
+    scrapeFanCapsURL(input("Enter URL: "), input("Enter title: "))
+
+    #scrapeFanCapsURL('https://fancaps.net/movies/MovieImages.php?name=Kick_Ass_2&movieid=528', 'Kick-Ass 2')
     #scrapeFanCapsURL('https://fancaps.net/movies/MovieImages.php?name=Tom_and_Jerry_2021&movieid=2392', 'Tom and Jerry')
     #scrapeFanCapsURL('https://fancaps.net/movies/MovieImages.php?name=Cruella_2021&movieid=2753', 'Cruella')
 
